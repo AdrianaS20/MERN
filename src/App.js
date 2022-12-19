@@ -35,18 +35,16 @@ const Header = (props) => {
   )
 }
 
+/* Refactor the Content component so that it does not render any names of parts 
+or their number of exercises by itself. Instead it only renders three Part 
+components of which each renders the name and number of exercises of one part.
+*/
 const Constant = (props) => {
   return (
     <div>
-      <p>
-        {props.p1} {props.e1}
-      </p>
-      <p>
-        {props.p2} {props.e2}
-      </p>
-      <p>
-        {props.p3} {props.e3}
-      </p>
+      <Part part={props.p1} exercise={props.e1}/>
+      <Part part={props.p2} exercise={props.e2}/>
+      <Part part={props.p3} exercise={props.e3}/>
     </div>
   )
 }
@@ -55,6 +53,16 @@ const Total = (props) => {
   return (
     <div>
       <p>Number of exercises {props.e1 + props.e2 + props.e3}</p>
+    </div>
+  )
+}
+
+const Part = (props) => {
+  return (
+    <div>
+      <p>
+        {props.part} {props.exercise}
+      </p>
     </div>
   )
 }

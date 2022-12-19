@@ -1,28 +1,30 @@
-/* TODO: Unfortunately, the entire application is in the same component. 
-Refactor the code so that it consists of three new components: Header, Content, 
-and Total. All data still resides in the App component, which passes the 
-necessary data to each component using props. 
-Header takes care of rendering the name of the course, 
-Content renders the parts and their number of exercises and 
-Total renders the total number of exercises.
+/* TODO: Let's move forward to using objects in our application. Modify the 
+variable definitions of the App component as follows and also refactor the 
+application so that it still works:
 */
 const App = () => {
   const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const part1 = {
+    name: 'Fundamentals of React',
+    exercises: 10
+  }
+  const part2 = {
+    name: 'Using props to pass data',
+    exercises: 7
+  }
+  const part3 = {
+    name: 'State of a component',
+    exercises: 14
+  }
 
   return (
     <div>
       <Header name={course}/>
       <Constant 
-        p1={part1} p2={part2} p3={part3}
-        e1={exercises1} e2={exercises2} e3={exercises3}
+        p1={part1.name} p2={part2.name} p3={part3.name}
+        e1={part1.exercises} e2={part2.exercises} e3={part3.exercises}
       />
-      <Total e1={exercises1} e2={exercises2} e3={exercises3}/>
+      <Total e1={part1.exercises} e2={part2.exercises} e3={part3.exercises}/>
     </div>
   )
 }
@@ -35,10 +37,6 @@ const Header = (props) => {
   )
 }
 
-/* Refactor the Content component so that it does not render any names of parts 
-or their number of exercises by itself. Instead it only renders three Part 
-components of which each renders the name and number of exercises of one part.
-*/
 const Constant = (props) => {
   return (
     <div>

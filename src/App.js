@@ -19,19 +19,15 @@ const App = () => {
     }
   ]
 
+/* However, do not pass different objects as separate props from the App 
+component to the components Content and Total. Instead, pass them directly 
+as an array:
+*/
   return (
     <div>
-      <Header name={course}/>
-      <Constant 
-        p1={parts[0].name} e1={parts[0].exercises}
-        p2={parts[1].name} e2={parts[1].exercises}
-        p3={parts[2].name} e3={parts[2].exercises}
-      />
-      <Total 
-        e1={parts[0].exercises}
-        e2={parts[1].exercises}
-        e3={parts[2].exercises}
-      />
+      <Header course={course}/>
+      <Content parts={parts}/>
+      <Total parts={parts}/>
     </div>
   )
 }
@@ -39,25 +35,26 @@ const App = () => {
 const Header = (props) => {
   return (
     <div>
-      <h1>{props.name}</h1>
+      <h1>{props.course}</h1>
     </div>
   )
 }
 
-const Constant = (props) => {
+const Content = (arr) => {
   return (
     <div>
-      <Part part={props.p1} exercise={props.e1}/>
-      <Part part={props.p2} exercise={props.e2}/>
-      <Part part={props.p3} exercise={props.e3}/>
+      <Part part={arr.parts[0].name} exercise={arr.parts[0].exercises}/>
+      <Part part={arr.parts[1].name} exercise={arr.parts[1].exercises}/>
+      <Part part={arr.parts[2].name} exercise={arr.parts[2].exercises}/>
     </div>
   )
 }
 
-const Total = (props) => {
+const Total = (arr) => {
   return (
     <div>
-      <p>Number of exercises {props.e1 + props.e2 + props.e3}</p>
+      <p>Number of exercises {arr.parts[0].exercises + arr.parts[1].exercises + 
+      arr.parts[2].exercises}</p>
     </div>
   )
 }

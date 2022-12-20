@@ -1,33 +1,29 @@
-/* TODO: And then place the objects into an array. Modify the variable 
-definitions of App into the following form and modify the other parts of the 
-application accordingly
-*/
+/* TODO: Let's take the changes one step further. Change the course and its 
+parts into a single JavaScript object. Fix everything that breaks. */
 const App = () => {
-  const course = 'Half Stack application development'
-  const parts = [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
 
-/* However, do not pass different objects as separate props from the App 
-component to the components Content and Total. Instead, pass them directly 
-as an array:
-*/
   return (
     <div>
-      <Header course={course}/>
-      <Content parts={parts}/>
-      <Total parts={parts}/>
+      <Header course={course.name}/>
+      <Content parts={course.parts}/>
+      <Total parts={course.parts}/>
     </div>
   )
 }
